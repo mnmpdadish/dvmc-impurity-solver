@@ -1,7 +1,7 @@
 
 # Detailed dependencies documentation
 
-# Table of Contents
+## Table of Contents
 
 - [Summary and versions](#summary-and-versions)
 - [Package Manager](#package-manager)
