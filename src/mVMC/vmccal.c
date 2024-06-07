@@ -182,27 +182,19 @@ void VMCMainCal(MPI_Comm comm) {
     // if(sample>=sampleEnd-1000)
     // if(NVMCCalMode==0){
 
-    /*
-    if(PrintEnergy) {
       //int ii;
-      fprintf(File_E,"%d %16.12f %16.12f\n",sample, w, e);
-      if(NVMCCalMode>1){
-        if(PrintConfig) {
-          int jj,si;
-          fprintf(File_Config,"|");
-          for(si=0;si<2;si++){
-            for(jj=0;jj<Nsite;jj++){
-            //fprintf(File_Config,"%d %d %d ↑ %d ↓ \n",sample, jj, eleNum[jj],
-    eleNum[jj+Nsite]); fprintf(File_Config,"%d",eleNum[jj+si*Nsite]);
-            }
-            if(si==0) fprintf(File_Config,",");
-          }
-          fprintf(File_Config,">  ");
-          fprintf(File_Config,"%5d %16.12f   %4.3f %4.3f\n",sample, e, test_t,
-    test_u);
-        }
+    if(0){
+      printf("sample=%d e=% 5.2f ",sample, creal(e));
+      int jj,si;
+      printf("|");
+      for(si=0; si<2;si++){
+         for(jj=0;jj<Nsite;jj++){
+             printf("%d",eleNum[jj+si*Nsite]);
+         }
+         printf(":");
       }
-
+      printf(">  \n");
+    }
 
 
       //if(fabs(creal(e)-creal(Etot/Wc))/(creal(Etot/Wc))>0.2) {
@@ -212,8 +204,7 @@ void VMCMainCal(MPI_Comm comm) {
       //  printf("%d %d ↑ %d ↓ \n", ii, eleIdx[ii], eleIdx[ii+Nsite]);
       //}
       //}
-    }
-    */
+    
     //}
 
 #ifdef _DEBUG_VMCCAL
@@ -348,7 +339,9 @@ void VMCMainCal(MPI_Comm comm) {
       StopTimer(45);
     }
   }
-
+  printf("Etot=% 12.8f \n", Etot);
+  printf("Etot/Wc=% 12.8f \n", Etot/Wc);
+  exit(0);
   return;
 }
 
