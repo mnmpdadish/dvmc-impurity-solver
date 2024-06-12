@@ -1188,7 +1188,7 @@ int ReadInputParameters(char *xNameListFile, MPI_Comm comm) {
               exit(-1);
 	    }
             Slater[iNOrbitalAntiParallel + idx] = tmp_real + I * tmp_comp; //up-up
-            //printf("MDEBUG: %d %d %d %lf\n",i,idx,iNOrbitalParallel,tmp_real,tmp_comp);
+            printf("MDEBUG: %d %d %d %lf\n",i,idx,iNOrbitalParallel,tmp_real,tmp_comp);
             //ierr = fscanf(fp, "%d %lf %lf ", &idx, &tmp_real, &tmp_comp);
             //Slater[iNOrbitalAntiParallel+idx+1] = tmp_real + I * tmp_comp;//down-down
           }

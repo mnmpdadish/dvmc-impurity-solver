@@ -176,8 +176,8 @@ void SyncModifiedParameter(MPI_Comm comm) {
     if(xmax < cabs(Slater[i])) xmax = cabs(Slater[i]);
   }
   ratio = D_AmpMax/xmax;
-  #pragma omp parallel for default(shared) private(i)
-  for(i=0;i<NSlater;i++) Slater[i] *= ratio;
+  //#pragma omp parallel for default(shared) private(i)
+  //for(i=0;i<NSlater;i++) Slater[i] *= ratio;     // not sure why
 
   /***** normalize OptTrans *****/
   if(FlagOptTrans>0){

@@ -183,7 +183,7 @@ void VMCMainCal(MPI_Comm comm) {
     // if(NVMCCalMode==0){
 
       //int ii;
-    if(0){
+    if(1){
       printf("sample=%d e=% 5.2f ",sample, creal(e));
       int jj,si;
       printf("|");
@@ -195,6 +195,7 @@ void VMCMainCal(MPI_Comm comm) {
       }
       printf(">  \n");
     }
+    fflush(stdout);
 
 
       //if(fabs(creal(e)-creal(Etot/Wc))/(creal(Etot/Wc))>0.2) {

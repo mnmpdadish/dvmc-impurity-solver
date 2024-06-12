@@ -155,22 +155,34 @@ int main(int argc, char *argv[]) {
   if (rank0 == 0)
     fprintf(stdout, "Start: Initialize parameters.\n");
   InitParameter(); /* Run parallelly for synchronization of random generator */
+  int i=0;
+  
   if (flagReadInitPara > 0 && rank0 == 0)
     ReadInitParameter(fileInitPara);
   //[s] add read parameters respectively
   if (rank0 == 0) {
-    if (!ReadInputParameters(fileDefList, comm0) == 0) {
-      //[ToDo]: Add Error procedure
-      info = 1;
-    }
+    //if (!ReadInputParameters(fileDefList, comm0) == 0) {
+      // //[ToDo]: Add Error procedure
+      //info = 1;
+    //}
     fprintf(stdout, "End  : Initialize parameters.\n");
   }
   //[e] add read parameters respectively
-
+  
   SyncModifiedParameter(comm0);
   StopTimer(13);
 
-  /* initialize variables for quantum projection */
+  if (rank0 == 0){
+    for(i=0;i<NProj; i++){
+      printf("init Proj[%d] = % 4.4f + 1.j*% 4.2f \n", i, creal(Proj[i]), cimag(Proj[i]) );
+    }
+
+    for(i=0;i<NSlater; i++){
+      printf("init Slater[%d] = % 4.4f + 1.j*% 4.2f \n", i, creal(Slater[i]), cimag(Slater[i]) );
+    }
+  }
+ 
+ /* initialize variables for quantum projection */
   if (rank0 == 0)
     fprintf(stdout, "Start: Initialize variables for quantum projection.\n");
   InitQPWeight();
